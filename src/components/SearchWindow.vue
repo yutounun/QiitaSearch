@@ -65,12 +65,12 @@ const onSearch = () => {
               class="px-50"
               v-model="searchKeyword"
             ></v-text-field>
-            <v-icon 
-              style="vertical-align: middle"
+            <v-btn
+              icon="mdi-magnify"
+              color="success"
               @click="onSearch"
-            >
-              mdi-file-find
-            </v-icon>
+              class="ml-5"
+            ></v-btn>
           </v-row>
         </v-col>
       </v-row>
