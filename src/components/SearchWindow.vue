@@ -1,54 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import axios from 'axios';
-
-type axiosParams = {
-  page: number,
-  per_page: number,
-  query: string
-}
-const searchKeyword = ref<any>()
-const data = ref()
-const isLoading = ref(false)
-const isOption1 = ref<boolean>(true)
-
-const onSearch = () => {
-  // show loading icon
-  isLoading.value = true
-  // if isOption1 has been clicked
-  if (isOption1){
-    searchKeyword.value = 'title:' + searchKeyword.value
-  }
-  
-  const params: axiosParams = { 
-    page: 3,
-    per_page: 20,
-    query: searchKeyword.value
-  };
-  // var params = {page: 1, per_page: 20, query: 'js'};
-
-  // Call an API using axios
-  axios.get('https://qiita.com/api/v2/items', {params})
-    .then(function(res){
-        // make sure if you get data from Qiita
-        console.log(res)
-        data.value = res.data
-    })
-    // Watch errors
-    .catch(function(error){
-      console.log('Error!' + error)
-    })
-    // Once HTTP request end, loading icon will be hidden
-    .finally(function(){
-      isLoading.value = false
-    })
-  searchKeyword.value = []
-}
+import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTitle, isIncludingBody, isIncludingCreated, isIncludingUpdated, searchKeyword } from './OptionStates';
 </script>
 
 <template>
   <v-form>
     <v-container>
+      {{ searchKeyword }}
       <v-row
         class="blue lighten-4" style="height: 30vh;"
         justify="center" align-content="center"
@@ -64,6 +22,7 @@ const onSearch = () => {
               variant="contained"
               class="px-50"
               v-model="searchKeyword"
+              v-on:keydown.enter="onSearch()"
             ></v-text-field>
             <v-btn
               icon="mdi-magnify"
@@ -76,8 +35,13 @@ const onSearch = () => {
       </v-row>
       <v-row>
         <ul>
-          <li v-for="li in data">{{ li.title }}</li>
+          <li v-for="li in data" :key="li.id">
+            <a :href="li.url">{{ li.title }}</a>
+          </li>
         </ul>
+      </v-row>
+      <v-row>
+        {{ loading }}
       </v-row>
     </v-container>
   </v-form>
