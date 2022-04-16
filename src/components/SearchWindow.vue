@@ -31,17 +31,10 @@ import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTi
               class="ml-5"
             ></v-btn>
           </v-row>
+          <v-row>
+            {{ loading }}
+          </v-row>
         </v-col>
-      </v-row>
-      <v-row>
-        <ul>
-          <li v-for="li in data" :key="li.id">
-            <a :href="li.url">{{ li.title }}</a>
-          </li>
-        </ul>
-      </v-row>
-      <v-row>
-        {{ loading }}
       </v-row>
     </v-container>
   </v-form>

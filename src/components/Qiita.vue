@@ -3,13 +3,19 @@ import Title from './Title.vue'
 import SearchWindow from './SearchWindow.vue'
 import Options from './Options.vue'
 import Result from './Result.vue'
+import { showResult } from './Search';
 </script>
 
 <template>
-  <Title />
-  <SearchWindow />
-  <Options />
-  <Result />
+  <div v-if="!showResult">
+    <Title />
+    <SearchWindow />
+    <Options />
+    {{ showResult }}
+  </div>
+  <div v-else>
+    <Result />
+  </div>
 </template>
 
 <style>
