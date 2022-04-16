@@ -6,7 +6,6 @@ import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTi
 <template>
   <v-form>
     <v-container>
-      {{ searchKeyword }}
       <v-row
         class="blue lighten-4" style="height: 30vh;"
         justify="center" align-content="center"

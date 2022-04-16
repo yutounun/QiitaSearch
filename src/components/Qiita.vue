@@ -11,7 +11,6 @@ import { showResult } from './Search';
     <Title />
     <SearchWindow />
     <Options />
-    {{ showResult }}
   </div>
   <div v-else>
     <Result />
