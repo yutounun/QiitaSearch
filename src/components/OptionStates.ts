@@ -1,5 +1,6 @@
 import { ref, InjectionKey } from 'vue';
 import axios from 'axios';
+import { showResult } from './Search';
 
 export const isIncludingTitle = ref<boolean>(false)
 export const isNotIncludingTitle = ref<boolean>(false)
@@ -82,6 +83,7 @@ export const onSearch = () => {
         // make sure if you get data from Qiita
         console.log(res)
         data.value = res.data
+        showResult.value = true
     })
     // Watch errors
     .catch(function(error){
