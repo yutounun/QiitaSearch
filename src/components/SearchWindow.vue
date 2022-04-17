@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-
-const test = () => {
-  confirm('test')
-}
+import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTitle, isIncludingBody, isIncludingCreated, isIncludingUpdated, searchKeyword } from './OptionStates';
 </script>
 
 <template>
@@ -23,13 +20,18 @@ const test = () => {
               label="search on Qiita"
               variant="contained"
               class="px-50"
+              v-model="searchKeyword"
+              v-on:keydown.enter="onSearch()"
             ></v-text-field>
-            <v-icon 
-              style="vertical-align: middle"
-              @click="test"
-            >
-              mdi-file-find
-            </v-icon>
+            <v-btn
+              icon="mdi-magnify"
+              color="success"
+              @click="onSearch"
+              class="ml-5"
+            ></v-btn>
+          </v-row>
+          <v-row>
+            {{ loading }}
           </v-row>
         </v-col>
       </v-row>

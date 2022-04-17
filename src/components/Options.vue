@@ -1,41 +1,68 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { 
+  onIncludingTitle,
+  onNotIncludingTitle,
+  onIncludingBody,
+  onIncludingCreated,
+  onIncludingUpdated
+} from './OptionStates';
 
 </script>
 
 <template>
   <div class="text-center">
     <v-btn
-      class="ma-2"
-      :loading="loading2"
-      :disabled="loading2"
+      :loading="isIncludingTitle"
+      class="ma-3 px-10"
       color="success"
-      @click="loader = 'loading2'"
+      @click="onIncludingTitle()"
     >
-      1st Option
+      TITLE
       <template v-slot:loader>
         <span>Loading...</span>
       </template>
     </v-btn>
-        <v-btn
-      class="ma-2"
-      :loading="loading2"
-      :disabled="loading2"
+    <v-btn
+      class="ma-3 px-9"
+      :loading="isNotIncludingTitle"
       color="success"
-      @click="loader = 'loading2'"
+      @click="onNotIncludingTitle()"
     >
-      2nd Option
+      -TITLE
       <template v-slot:loader>
         <span>Loading...</span>
       </template>
     </v-btn>
-        <v-btn
-      class="ma-2"
-      :loading="loading2"
-      :disabled="loading2"
+    <v-btn
+      class="ma-3 px-8"
+      :loading="isIncludingBody"
       color="success"
-      @click="loader = 'loading2'"
+      @click="onIncludingBody()"
     >
-      3rd Option
+      BODY
+      <template v-slot:loader>
+        <span>Loading...</span>
+      </template>
+    </v-btn>
+    <v-btn
+      class="ma-3 px-8"
+      :loading="isIncludingCreated"
+      color="success"
+      @click="onIncludingCreated()"
+    >
+      CREATED
+      <template v-slot:loader>
+        <span>Loading...</span>
+      </template>
+    </v-btn>
+    <v-btn
+      class="ma-3 px-8"
+      :loading="isIncludingUpdated"
+      color="success"
+      @click="onIncludingUpdated()"
+    >
+      UPDATED
       <template v-slot:loader>
         <span>Loading...</span>
       </template>
