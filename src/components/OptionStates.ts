@@ -50,6 +50,8 @@ type axiosParams = {
 }
 export const data = ref()
 export const loading = ref<string>('')
+export const isResults = ref<boolean>()
+export const resultsExplanation = ref<string>('');
 
 export const onSearch = () => {
   // show loading icon
@@ -80,10 +82,18 @@ export const onSearch = () => {
   // Call an API using axios
   axios.get('https://qiita.com/api/v2/items', {params})
     .then(function(res){
+      console.log(res.data.length);
+      if(res.data.length === 0) {
+        isResults.value = false;
+        resultsExplanation.value = 'no data';
+        showResult.value = true
+      } else {
         // make sure if you get data from Qiita
+        isResults.value = true;
         console.log(res)
         data.value = res.data
         showResult.value = true
+      }
     })
     // Watch errors
     .catch(function(error){
