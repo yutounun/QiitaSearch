@@ -1,3 +1,4 @@
+// function related to options
 import { ref, InjectionKey } from 'vue';
 import axios from 'axios';
 import { showResult } from './Search';
@@ -8,7 +9,8 @@ export const isIncludingBody = ref<boolean>(false)
 export const isIncludingCreated = ref<boolean>(false)
 export const isIncludingUpdated = ref<boolean>(false)
 export const focusInput = ref<any>(null)
-// クリックされたらsearchKeywordに文字追加
+
+// Insert words into searchKeyword when clicked
 export const onIncludingTitle = () => {
   isIncludingTitle.value = !isIncludingTitle.value
   if(isIncludingTitle.value){
@@ -16,24 +18,34 @@ export const onIncludingTitle = () => {
   }
   focusInput.value.focus()
 }
+
+// Insert words into searchKeyword when clicked
 export const onNotIncludingTitle = () => {
   isNotIncludingTitle.value = !isNotIncludingTitle.value
   if(isNotIncludingTitle.value){
     searchKeyword.value +=' -title:'
   }
 }
+
+// Insert words into searchKeyword when clicked
 export const onIncludingBody = () => {
   isIncludingBody.value = !isIncludingBody.value
   if(isIncludingBody.value){
     searchKeyword.value += ' body:'
   }
 }
+
+// Insert words into searchKeyword when clicked
+// not working yet
 export const onIncludingCreated = () => {
   isIncludingCreated.value = !isIncludingCreated.value
   if(isIncludingCreated.value){
     searchKeyword.value += 'title:'
   }
 }
+
+// Insert words into searchKeyword when clicked
+// not working yet
 export const onIncludingUpdated = () => {
   isIncludingUpdated.value = !isIncludingUpdated.value  
   if(isIncludingUpdated.value){
@@ -42,19 +54,21 @@ export const onIncludingUpdated = () => {
 }
 
 
-export const searchKeyword = ref<any>('')
+// search function
 type axiosParams = {
   page: number,
   per_page: number,
   query: string
 }
+export const searchKeyword = ref<any>('')
 export const data = ref()
 export const loading = ref<string>('')
 
 export const onSearch = () => {
-  // show loading icon
+  // show loading sentense
   loading.value = 'loading. wait a sec'
   
+  // Add options when axios works if each values are true
   if (isIncludingTitle.value == true){
     searchKeyword.value = 'title:' + searchKeyword.value
   }
@@ -71,14 +85,16 @@ export const onSearch = () => {
     searchKeyword.value = 'updated:' + searchKeyword.value
   }
 
+  // params for data you get
   const params: axiosParams = { 
     page: 3,
     per_page: 20,
     query: searchKeyword.value
   };
   console.log(searchKeyword.value);
+  
   // Call an API using axios
-  axios.get('https://qiita.com/api/v2/items', {params})
+  axios.get('https://qiita.com/api/v2/items', { params })
     .then(function(res){
         // make sure if you get data from Qiita
         console.log(res)

@@ -1,14 +1,16 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
+  <!-- 検索画面タイトル部分 -->
   <v-form>
     <v-container>
+      <!-- タイトルの一列 -->
       <v-row 
         justify="center" 
         class="mt-16 mb-n16"
       >
+        <!-- タイトルの一行 -->
         <v-col
           cols="12"
           sm="6"
@@ -24,6 +26,7 @@
 </template>
 
 <style scoped>
+/* タイトルのスタイル */
 .title {
   color: rgb(199, 179, 66);
   font-size: 40px;

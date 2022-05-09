@@ -6,10 +6,14 @@ import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTi
 <template>
   <v-form>
     <v-container>
+      <!-- 検索窓一列 -->
       <v-row
-        class="blue lighten-4" style="height: 30vh;"
-        justify="center" align-content="center"
+        class="blue lighten-4" 
+        style="height: 30vh;"
+        justify="center" 
+        align-content="center"
       >
+        <!-- 検索窓一行 -->
         <v-col
           cols="12"
           sm="6"
