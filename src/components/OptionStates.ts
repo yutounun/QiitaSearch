@@ -6,8 +6,6 @@ import { showResult } from './Search';
 export const isIncludingTitle = ref<boolean>(false)
 export const isNotIncludingTitle = ref<boolean>(false)
 export const isIncludingBody = ref<boolean>(false)
-export const isIncludingCreated = ref<boolean>(false)
-export const isIncludingUpdated = ref<boolean>(false)
 export const focusInput = ref<any>(null)
 
 // Insert words into searchKeyword when clicked
@@ -35,25 +33,6 @@ export const onIncludingBody = () => {
   }
 }
 
-// Insert words into searchKeyword when clicked
-// not working yet
-export const onIncludingCreated = () => {
-  isIncludingCreated.value = !isIncludingCreated.value
-  if(isIncludingCreated.value){
-    searchKeyword.value += 'title:'
-  }
-}
-
-// Insert words into searchKeyword when clicked
-// not working yet
-export const onIncludingUpdated = () => {
-  isIncludingUpdated.value = !isIncludingUpdated.value  
-  if(isIncludingUpdated.value){
-    searchKeyword.value += 'title:'
-  }
-}
-
-
 // search function
 type axiosParams = {
   page: number,
@@ -77,12 +56,6 @@ export const onSearch = () => {
   }
   if (isIncludingBody.value == true){
     searchKeyword.value = 'body:' + searchKeyword.value
-  }
-  if (isIncludingCreated.value == true){
-    searchKeyword.value = 'created:' + searchKeyword.value
-  }
-  if (isIncludingUpdated.value == true){
-    searchKeyword.value = 'updated:' + searchKeyword.value
   }
 
   // params for data you get

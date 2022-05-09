@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTitle, isIncludingBody, isIncludingCreated, isIncludingUpdated, searchKeyword } from './OptionStates';
+import { loading, focusInput, data, onSearch, isIncludingTitle, isNotIncludingTitle, isIncludingBody, searchKeyword } from './OptionStates';
 </script>
 
 <template>

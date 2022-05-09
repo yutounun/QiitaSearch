@@ -4,8 +4,6 @@ import {
   onIncludingTitle,
   onNotIncludingTitle,
   onIncludingBody,
-  onIncludingCreated,
-  onIncludingUpdated
 } from './OptionStates';
 
 </script>
@@ -41,28 +39,6 @@ import {
       @click="onIncludingBody()"
     >
       BODY
-      <template v-slot:loader>
-        <span>Loading...</span>
-      </template>
-    </v-btn>
-    <v-btn
-      class="ma-3 px-8"
-      :loading="isIncludingCreated"
-      color="success"
-      @click="onIncludingCreated()"
-    >
-      CREATED
-      <template v-slot:loader>
-        <span>Loading...</span>
-      </template>
-    </v-btn>
-    <v-btn
-      class="ma-3 px-8"
-      :loading="isIncludingUpdated"
-      color="success"
-      @click="onIncludingUpdated()"
-    >
-      UPDATED
       <template v-slot:loader>
         <span>Loading...</span>
       </template>
